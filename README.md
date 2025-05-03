@@ -33,3 +33,26 @@ Collision Detection: Distance checks on the X, Y and Z axes determine whether th
 
 1. Python 3.8+ must be installed on your computer to run the prototype.
 2. You can use the following command to install the VPython library: bash pip install vpython.
+
+# Data Logging (Optional)
+You can record each particle’s magnetic field exposure during the simulation by using the following function:
+
+```python
+from save_exposure_data import save_exposure_data
+save_exposure_data(timestamps, exposure_history)
+```
+This will create a file called exposure_data.csv containing time and exposure values for each particle
+
+# MATLAB Visualization
+To visualize and compare the exposure of particles over time, you can use the following simple MATLAB code
+### What does the graph show?
+
+- Each line represents a particle.
+- Y-axis: time spent in magnetic fields.
+- X-axis: total simulation time.
+- Flat line → particle exited the magnetic field.
+- Rising line → still inside a magnetic field.
+- Helps compare:
+  - How long each particle was affected,
+  - The impact of initial position,
+  - When particles hit the target.
