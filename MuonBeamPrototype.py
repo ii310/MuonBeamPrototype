@@ -1,4 +1,10 @@
 from vpython import *
+import csv
+
+timestamps = []
+exposures = [[] for _ in range(4)]
+t = 0
+
 
 # Scene adjustments
 scene.background = color.black
@@ -66,8 +72,14 @@ Collision is determined by distance controls on the x, y, and z axes
 
 
 
-while True: # Simulation Cycle
+while t < 800: # Simulation Cycle
     rate(100)
+    
+    timestamps.append(round(t * dt, 3))
+    for i, p in enumerate(particles):
+        exposures[i].append(round(p.magnetic_exposure, 3))
+
+    
     for p in particles:
         B = get_B(p.pos.x, p.pos.y)
         if B != vector(0,0,0):
@@ -86,3 +98,13 @@ while True: # Simulation Cycle
         if check_collision(p.pos, target):
             p.color = color.magenta
             hit_label.text = f" The particle hit the target\nExposure: {round(p.magnetic_exposure, 3)} s"
+    t += 1
+    
+with open('exposure_data.csv', 'w', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(['Time', 'P1', 'P2', 'P3', 'P4'])
+    for i in range(len(timestamps)):
+        writer.writerow([timestamps[i]] + [exposures[j][i] for j in range(4)])
+
+print("The data saved to exposure_data.csv file ")
+    
