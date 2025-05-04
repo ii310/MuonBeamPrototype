@@ -73,7 +73,7 @@ Collision is determined by distance controls on the x, y, and z axes
 
 
 while t < 800: # Simulation Cycle
-    rate(100)
+    rate(100) # The simulation is limited to 8 seconds so that it doesn't loop forever
     
     timestamps.append(round(t * dt, 3))
     for i, p in enumerate(particles):
