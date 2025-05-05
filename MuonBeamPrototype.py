@@ -14,7 +14,7 @@ scene.title = "Muon Beam Alignment Prototype"
 scene.range = 10
 scene.center = vector(5, 0, 0)
 
-# Constants of Physics 
+# Constants of Physics
 q = 1  #Coulomb = 1.6e-19 (too small to be seen in real world) for toggle the situation coulomb taken as 1
 m = 1  # same thing for simplification the mass taken as 1
 dt = 0.01 #Time step: advances by this value for each simulation cycle.
